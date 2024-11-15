@@ -4,7 +4,7 @@ body {
     color: #DCDCDC;
     font-size: 20px;
 }
-button {
+.title_button {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -14,26 +14,13 @@ button {
     text-decoration: none;
     position: relative;
 }
-button::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 2px;
-    background-color: #4682B4;
-    opacity: 0;
-}
-button:hover,
-.active{
+.active,
+.title_button:hover {
     transform: scale(1.1);
     color: #4682B4;
 }
-button:hover::before{
-    opacity: 1;
-}
-button::after {
+.active::before,
+.title_button:hover::before {
     content: '';
     position: absolute;
     bottom: 0;
@@ -42,25 +29,15 @@ button::after {
     width: 80%;
     height: 2px;
     background-color: #4682B4;
-    opacity: 0;
-}
-button:hover::after,
-.active::before {
     opacity: 1;
 }
-select{
-    display: block;
-    width: 100%;
-    max-width: 150px;
-    padding: 6px;
-    font-size: 16px;
-    border: 2px solid #4682B4;
-    border-radius: 12px;
-    outline: none;
-    color: #322525;
-    font-family: inherit;
+.title_button::before {
+    opacity: 0;
 }
-input[type="text"]{
+.active::before {
+    opacity: 1 !important;
+}
+select, input[type='text'] {
     display: block;
     width: 100%;
     max-width: 150px;
@@ -78,10 +55,26 @@ input[type="text"]{
 .value {
     display: none;
 }
-.from_title_padding{
-    padding-top: 30px;
-}
-.select_padding{
+.blocks {
     padding-top: 10px;
-    padding-bottom: 10px;
+}
+.title{
+    padding-top: 20px;
+}
+.calculate {
+    background-color: transparent;
+    border: 1px solid #DCDCDC;
+    border-radius: 16px;
+    padding: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+    position: relative;
+}
+.calculate:hover {
+    transform: scale(1.1);
+    color: #4682B4;
+    border: 1px solid #4682B4;
 }

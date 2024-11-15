@@ -11,47 +11,47 @@
 <body>
     <div><h1 class="title">Unit converter</h1></div>
 
-    <!-- Title buttons -->
+    <!-- Title BUTTONS -->
     <div id="title_block">
-        <button type="button" onclick="toggle_div('length')">Length</button>
-        <button type="button" onclick="toggle_div('weight')">Weight</button>
-        <button type="button" onclick="toggle_div('temperature')">Temperature</button>
+        <button type="button" class="title_button" onclick="toggle_div('length')">Length</button>
+        <button type="button" class="title_button" onclick="toggle_div('weight')">Weight</button>
+        <button type="button" class="title_button" onclick="toggle_div('temperature')">Temperature</button>
     </div>
 
     <div id="value_block" class="value">
 
         <!-- Block INPUT -->
-        <div class="from_title_padding">
+        <div class="title">
             <label for="value" id="value_label"></label>
             <input type="text" id="value" name="value">
         </div>
 
         <!-- Block SELECT CONVERTED FROM -->
-        <div class="select_padding">
+        <div class="blocks">
             <label for="converted_from">Converted from</label>
             <select id="converted_from" name="converted_from">
             </select>
         </div>
 
         <!-- Block SELECT CONVERTED TO -->
-        <div class="select_padding">
+        <div class="blocks">
             <label for="converted_to">Converted to</label>
             <select id="converted_to" name="converted_to">
             </select>
         </div>
 
         <!-- Block LENGTH BUTTON SUBMIT -->
-        <div class="select_padding">
-            <button type="submit" id="calculate">Calculate</button>
+        <div class="title">
+            <button type="submit" id="calculate" class="calculate">Calculate</button>
         </div>
 
         <!-- Block LENGTH RESULT -->
-        <div class="select_padding">
+        <div class="title">
             Result:
             <span id="result"></span>
         </div>
     </div>
 
-<script src="../static/length.js"></script>
+<script src="../static/convert.js"></script>
 </body>
 </html>

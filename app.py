@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-app = Flask(__name__)
-app.debug = 'true'
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-app.jinja_env.auto_reload = True
-app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+app = Flask(__name__, static_folder='static')
 
 size = {
     'millimeter': [1, 'mm'],
@@ -35,24 +32,21 @@ temperatures = {
 def index():
     return render_template('index.html')
 
-@app.route('/convert_length', methods=['POST'])
-def convert_length():
+@app.route('/convert', methods=['POST'])
+def convert():
     value = float(request.json['value'])
     converted_from = request.json['converted_from']
     converted_to = request.json['converted_to']
     unit = request.json['unit']
 
-    if converted_from == converted_to:
-        return jsonify(value)
-
+    if converted_from == converted_to: return jsonify(f'{str(value)}  {size[converted_to][1]}')
     if unit == 'temperature':
-        result = temperatures.get((converted_from, converted_to))
-
+        calculate = temperatures.get((converted_from, converted_to))
+        result = calculate(value)
+        return jsonify(f'{str(round(result, 2))} {size[converted_to][1]}')
     else:
-        result = value * float(size[converted_from][0]) / float(size[converted_to][0])
-
-
-    return jsonify(result)
+        result = value * size[converted_from][0] / size[converted_to][0]
+        return jsonify(f'{str(result)} {size[converted_to][1]}')
 
 if __name__ == '__main__':
     app.run()
